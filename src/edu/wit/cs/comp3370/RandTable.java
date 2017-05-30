@@ -11,8 +11,12 @@ public class RandTable extends HashTable {
 
 	@Override
 	public int calculateHash(String word) {
-		// TODO: implement hash from slides that uses random table
-		return -1;
+		int hash = 0;
+		for(byte b=0; b<word.length();b++){
+			Integer.rotateLeft(hash, 4);
+			hash ^= rand[word.charAt(b)];
+		}
+		return hash % tableSize;
 	}
 
 }

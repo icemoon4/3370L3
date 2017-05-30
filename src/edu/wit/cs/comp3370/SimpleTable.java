@@ -8,8 +8,12 @@ public class SimpleTable extends HashTable {
 
 	@Override
 	public int calculateHash(String word) {
-		// TODO: implement hash from slides that uses multiplier
-		return -1;
+		int hash = 0;
+		int multiplier = 31;
+		for(byte b=0; b<word.length(); b++){
+			hash = ((hash*multiplier)+word.charAt(b)) % tableSize;
+		}
+		return hash;
 	}
 
 }
